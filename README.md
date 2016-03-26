@@ -1,8 +1,8 @@
-# sails-hook-orm 
+# sails-hook-offshore 
 
-Implements support for Waterline ORM in Sails.
+Implements support for Offshore ORM in Sails.
 
-> This is a core hook in the Sails.js framework.  You can override or disable it using your sailsrc file or environment variables.  See http://sailsjs.org/documentation/concepts/configuration for more information.
+> You can override or disable it using your sailsrc file or environment variables.  See http://sailsjs.org/documentation/concepts/configuration for more information.
 
 
 ## Status
