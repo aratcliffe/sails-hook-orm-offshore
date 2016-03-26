@@ -43,7 +43,7 @@ module.exports = function (sails) {
 
 
       // Default model/adapter definitions to automatically attach
-      // to `sails.hooks.orm.adapters` and/or `sails.hooks.orm.models`.
+      // to `sails.hooks['orm-offshore'].adapters` and/or `sails.hooks['orm-offshore'].models`.
       orm: {
 
         // By default, relevant warnings are shown when NODE_ENV is "production".
@@ -98,22 +98,22 @@ module.exports = function (sails) {
       // (This particular timing-- before initialize()-- is for backwards compatibility.
       //  Originally it was so that other hooks could mix in models/adapters. Note that
       //  this behavior may change in a future version of Sails.)
-      if (!sails.hooks.orm.models) {
-        sails.hooks.orm.models = {};
+      if (!sails.hooks['orm-offshore'].models) {
+        sails.hooks['orm-offshore'].models = {};
         // Expose a reference to `hook.models` as `sails.models`
-        sails.models = sails.hooks.orm.models;
+        sails.models = sails.hooks['orm-offshore'].models;
       }
-      if (!sails.hooks.orm.adapters) {
-        sails.hooks.orm.adapters = {};
+      if (!sails.hooks['orm-offshore'].adapters) {
+        sails.hooks['orm-offshore'].adapters = {};
         // Expose a reference to `hook.adapters` as `sails.adapters`
-        sails.adapters = sails.hooks.orm.adapters;
+        sails.adapters = sails.hooks['orm-offshore'].adapters;
       }
 
       // Listen for reload events
-      sails.on('hook:orm:reload', sails.hooks.orm.reload);
+      sails.on('hook:orm:reload', sails.hooks['orm-offshore'].reload);
 
       // Listen for lower event, and tear down all of the adapters
-      sails.once('lower', sails.hooks.orm.teardown);
+      sails.once('lower', sails.hooks['orm-offshore'].teardown);
     },
 
 
@@ -124,37 +124,37 @@ module.exports = function (sails) {
      * Logic to run when this hook loads.
      */
     initialize: function (next) {
-      // console.log('>>>>>> sails.hooks.orm.initialize() called.');
+      // console.log('>>>>>> sails.hooks['orm-offshore'].initialize() called.');
       // var _ = require('lodash');
       // console.log(
       //   'Currently there are %d models, %d datastores, and %d adapters:',
-      //   _.keys(sails.hooks.orm.models).length,
-      //   _.keys(sails.hooks.orm.datastores).length,
-      //   _.keys(sails.hooks.orm.adapters).length,
-      //   _.keys(sails.hooks.orm.models),
-      //   _.keys(sails.hooks.orm.datastores),
-      //   _.keys(sails.hooks.orm.adapters)
+      //   _.keys(sails.hooks['orm-offshore'].models).length,
+      //   _.keys(sails.hooks['orm-offshore'].datastores).length,
+      //   _.keys(sails.hooks['orm-offshore'].adapters).length,
+      //   _.keys(sails.hooks['orm-offshore'].models),
+      //   _.keys(sails.hooks['orm-offshore'].datastores),
+      //   _.keys(sails.hooks['orm-offshore'].adapters)
       // );
-      return initialize(sails.hooks.orm, sails, next);
+      return initialize(sails.hooks["orm-offshore"], sails, next);
     },
 
 
 
     /**
-     * sails.hooks.orm.reload()
+     * sails.hooks['orm-offshore'].reload()
      */
     reload: function (next) {
-      return reload(sails.hooks.orm, sails, next);
+      return reload(sails.hooks["orm-offshore"], sails, next);
     },
 
 
 
     /**
-     * sails.hooks.orm.teardown()
+     * sails.hooks['orm-offshore'].teardown()
      */
     teardown: function (next) {
-      // console.log('>>>>>> sails.hooks.orm.teardown() called.');
-      return teardown(sails.hooks.orm, sails, next);
+      // console.log('>>>>>> sails.hooks['orm-offshore'].teardown() called.');
+      return teardown(sails.hooks["orm-offshore"], sails, next);
     }
 
 
