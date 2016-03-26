@@ -185,14 +185,15 @@ This repo contains a hook, one of the building blocks Sails is made out of.
 This hook is a dependency of Sails core as of v0.12.
 
 
-#### Can I disable this hook?
+#### How To configure this hook?
 
-Yes.  To disable this hook, merge the following JSON into your project's `.sailsrc` file:
+To enable this hook, merge the following JSON into your project's `.sailsrc` file:
 
 ```json
 {
   "hooks": {
-    "orm": false
+    "orm": false,
+    "offshore": true
   }
 }
 ```
