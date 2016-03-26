@@ -1,37 +1,42 @@
 {
-  "name": "sails-hook-orm",
-  "version": "1.0.3",
-  "description": "The next-gen ORM hook from Sails core.",
+  "name": "sails-hook-offshore",
+  "version": "0.0.1",
+  "description": "offshore hook from Sails core.",
+  "contributors": [
+    {
+      "name": "Alexandre Tiertant",
+      "github": "https://github.com/atiertant"
+    }
+  ],  
   "main": "index.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikermcneil/sails-hook-orm.git"
+    "url": "git+https://github.com/Atlantis-Software/sails-hook-offshore.git"
   },
   "keywords": [
-    "waterline",
+    "offshore",
     "orm",
     "sails",
     "hook",
     "sails-hook"
   ],
-  "author": "Mike McNeil",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikermcneil/sails-hook-orm/issues"
+    "url": "https://github.com/Atlantis-Software/sails-hook-offshore/issues"
   },
-  "homepage": "https://github.com/mikermcneil/sails-hook-orm#readme",
+  "homepage": "https://github.com/Atlantis-Software/sails-hook-offshore#readme",
   "dependencies": {
     "async": "1.5.2",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
     "rttc": "9.3.0",
-    "waterline": "0.11.0"
+    "offshore": "0.0.6"
   },
   "sails": {
     "isHook": true,
-    "hookName": "orm"
+    "hookName": "offshore"
   }
 }
