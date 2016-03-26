@@ -1,4 +1,4 @@
-# sails-hook-offshore 
+# sails-hook-orm-offshore 
 
 Implements support for Offshore ORM in Sails.
 
@@ -187,13 +187,12 @@ This hook is a dependency of Sails core as of v0.12.
 
 #### How To configure this hook?
 
-To enable this hook, merge the following JSON into your project's `.sailsrc` file:
+To enable this hook, you should disable waterline, merge the following JSON into your project's `.sailsrc` file:
 
 ```json
 {
   "hooks": {
     "orm": false,
-    "offshore": true
   }
 }
 ```
