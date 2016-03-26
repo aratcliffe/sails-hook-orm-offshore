@@ -4,6 +4,26 @@ Implements support for Offshore ORM in Sails.
 
 > You can override or disable it using your sailsrc file or environment variables.  See http://sailsjs.org/documentation/concepts/configuration for more information.
 
+#Install
+
+Install this hook with:
+
+```sh
+$ npm install sails-hook-orm-offshore --save
+```
+
+# Configuration
+
+`.sailsrc`
+````
+{
+  "hooks": {
+    "orm": false,
+    "pubsub": false
+  }
+}
+```
+
 
 ## Status
 
@@ -183,19 +203,6 @@ This repo contains a hook, one of the building blocks Sails is made out of.
 #### What version of Sails is this for?
 
 This hook is a dependency of Sails core as of v0.12.
-
-
-#### How To configure this hook?
-
-To enable this hook, you should disable waterline, merge the following JSON into your project's `.sailsrc` file:
-
-```json
-{
-  "hooks": {
-    "orm": false,
-  }
-}
-```
 
 #### Can I override this hook to use a different ORM like Mongoose or Bookshelf instead of Waterline?
 
