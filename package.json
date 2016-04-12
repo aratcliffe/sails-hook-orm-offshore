@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-orm-offshore",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "offshore hook from Sails core.",
   "contributors": [
     {
