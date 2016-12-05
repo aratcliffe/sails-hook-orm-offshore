@@ -20,27 +20,27 @@ describe('initialize() with no models and no adapters', function (){
       log: { level: 'warn' },
       hooks: {
         // Inject the orm hook in this repo into this Sails app
-        orm: require('../')
+        "orm-offshore": require('../')
       },
-      loadHooks: ['moduleloader', 'userconfig', 'orm']
+      loadHooks: ['moduleloader', 'userconfig', 'orm-offshore']
     },done);
   });
 
 
-  it('should have initialized the `orm` hook', function (){
-    assert(app.hooks.orm);
+  it('should have initialized the `orm-offshore` hook', function (){
+    assert(app.hooks['orm-offshore']);
   });
 
   it('should have set up a dictionary of models on the hook', function (){
-    assert(_.isObject(app.hooks.orm.models) && !_.isArray(app.hooks.orm.models));
+    assert(_.isObject(app.hooks['orm-offshore'].models) && !_.isArray(app.hooks['orm-offshore'].models));
   });
 
   it('should have set up a dictionary of adapters on the hook', function (){
-    assert(_.isObject(app.hooks.orm.adapters) && !_.isArray(app.hooks.orm.adapters));
+    assert(_.isObject(app.hooks['orm-offshore'].adapters) && !_.isArray(app.hooks['orm-offshore'].adapters));
   });
 
-  it('should have also exposed `sails.models` as a direct reference to `sails.hooks.orm.models`', function (){
-    assert(app.models === app.hooks.orm.models);
+  it('should have also exposed `sails.models` as a direct reference to `sails.hooks[\'orm-offshore\'].models`', function (){
+    assert(app.models === app.hooks['orm-offshore'].models);
   });
 
 
