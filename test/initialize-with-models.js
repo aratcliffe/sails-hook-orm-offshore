@@ -13,7 +13,7 @@ describe('initialize() with model(s)', function (){
 
   describe('without the appropriate adapter(s)', function (){
 
-    it('should fail to load the orm hook', function (done){
+    it('should fail to load the orm-offshore hook', function (done){
 
       // New up an instance of Sails.
       var app = new Sails();
@@ -26,7 +26,7 @@ describe('initialize() with model(s)', function (){
           // Inject the orm hook in this repo into this Sails app
           orm: require('../')
         },
-        loadHooks: ['moduleloader', 'userconfig', 'orm'],
+        loadHooks: ['moduleloader', 'userconfig', 'orm-offshore'],
         connections: {
           pretendDatabase: {
             adapter: 'sails-pretend-adapter-that-totally-does-not-exist'
@@ -87,7 +87,7 @@ describe('initialize() with model(s)', function (){
           // Inject the orm hook in this repo into this Sails app
           orm: require('../')
         },
-        loadHooks: ['moduleloader', 'userconfig', 'orm'],
+        loadHooks: ['moduleloader', 'userconfig', 'orm-offshore'],
         models: {
           migrate: 'safe'
         },
@@ -115,19 +115,19 @@ describe('initialize() with model(s)', function (){
 
 
     it('should have initialized the `orm` hook', function (){
-      assert(app.hooks.orm);
+      assert(app.hooks['orm-offshore']);
     });
 
     it('should have set up a dictionary of models on the hook', function (){
-      assert(_.isObject(app.hooks.orm.models) && !_.isArray(app.hooks.orm.models));
+      assert(_.isObject(app.hooks['orm-offshore'].models) && !_.isArray(app.hooks['orm-offshore'].models));
     });
 
     it('should have set up a dictionary of adapters on the hook', function (){
-      assert(_.isObject(app.hooks.orm.adapters) && !_.isArray(app.hooks.orm.adapters));
+      assert(_.isObject(app.hooks['orm-offshore'].adapters) && !_.isArray(app.hooks['orm-offshore'].adapters));
     });
 
     it('should have also exposed `sails.models` as a direct reference to `sails.hooks.orm.models`', function (){
-      assert(app.models === app.hooks.orm.models);
+      assert(app.models === app.hooks['orm-offshore'].models);
     });
 
     it('should contain the expected models in `sails.hooks.orm.models`', function (){
