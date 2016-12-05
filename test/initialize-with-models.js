@@ -24,7 +24,7 @@ describe('initialize() with model(s)', function (){
         log: { level: 'silent' },
         hooks: {
           // Inject the orm hook in this repo into this Sails app
-          orm: require('../')
+          "orm-offshore": require('../')
         },
         loadHooks: ['moduleloader', 'userconfig', 'orm-offshore'],
         connections: {
