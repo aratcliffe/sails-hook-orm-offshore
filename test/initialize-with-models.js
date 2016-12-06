@@ -102,7 +102,7 @@ describe('initialize() with model(s)', function (){
           moduleDefinitions: {
             models: {
               foo: {
-                connection: 'default'
+                connection: 'default',
                 primaryKey: 'id',
                 attributes: {
                   id: {
