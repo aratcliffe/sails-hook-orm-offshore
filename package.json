@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-orm-offshore",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "offshore hook from Sails core.",
   "contributors": [
     {
@@ -10,7 +10,7 @@
   ],  
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha test"
+    "test": "node ./node_modules/mocha/bin/mocha test -t 15000"
   },
   "repository": {
     "type": "git",
@@ -29,14 +29,21 @@
   },
   "homepage": "https://github.com/Atlantis-Software/sails-hook-orm-offshore#readme",
   "dependencies": {
-    "async": "1.5.2",
+    "async": "2.0.1",
+    "bluebird": "3.4.6",
+    "flaverr": "^1.0.0",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
-    "rttc": "9.3.0",
-    "offshore": "0.0.6"
+    "rttc": "^10.0.0-0",
+    "offshore": "0.0.6",
+    "offshore-memory": "0.0.6"
   },
   "sails": {
     "isHook": true,
     "hookName": "orm-offshore"
+  },
+    "devDependencies": {
+    "mocha": "3.2.0",
+    "sails": "^1.0.0-5"
   }
 }
