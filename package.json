@@ -29,11 +29,14 @@
   },
   "homepage": "https://github.com/Atlantis-Software/sails-hook-orm-offshore#readme",
   "dependencies": {
-    "async": "1.5.2",
+    "async": "2.0.1",
+    "bluebird": "3.4.6",
+    "flaverr": "^1.0.0",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
-    "rttc": "9.3.0",
-    "offshore": "0.0.6"
+    "rttc": "^10.0.0-0",
+    "offshore": "0.0.6",
+    "offshore-memory": "0.0.6"
   },
   "sails": {
     "isHook": true,
@@ -41,7 +44,6 @@
   },
     "devDependencies": {
     "mocha": "3.2.0",
-    "sails": "^1.0.0-5",
-    "offshore-memory": "0.0.6"
+    "sails": "^1.0.0-5"
   }
 }
