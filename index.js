@@ -123,6 +123,7 @@ module.exports = function (sails) {
 
       // Listen for reload events
       sails.on('hook:orm:reload', sails.hooks['orm-offshore'].reload);
+      sails.on('hook:orm-offshore:reload', sails.hooks['orm-offshore'].reload);
 
       // Listen for lower event, and tear down all of the adapters
       sails.once('lower', sails.hooks['orm-offshore'].teardown);
