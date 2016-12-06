@@ -88,6 +88,11 @@ describe('initialize() with model(s)', function (){
           orm: require('../')
         },
         loadHooks: ['moduleloader', 'userconfig', 'orm-offshore'],
+        connections: {
+          default: {
+            adapter: 'offshore-memory'
+          }
+        },
         models: {
           migrate: 'safe'
         },
@@ -97,6 +102,7 @@ describe('initialize() with model(s)', function (){
           moduleDefinitions: {
             models: {
               foo: {
+                connection: 'default'
                 primaryKey: 'id',
                 attributes: {
                   id: {
