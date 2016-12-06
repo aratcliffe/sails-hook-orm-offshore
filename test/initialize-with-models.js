@@ -132,11 +132,11 @@ describe('initialize() with model(s)', function (){
       assert(_.isObject(app.hooks['orm-offshore'].adapters) && !_.isArray(app.hooks['orm-offshore'].adapters));
     });
 
-    it('should have also exposed `sails.models` as a direct reference to `sails.hooks.orm.models`', function (){
+    it('should have also exposed `sails.models` as a direct reference to `sails.hooks[\'orm-offshore\'].models`', function (){
       assert(app.models === app.hooks['orm-offshore'].models);
     });
 
-    it('should contain the expected models in `sails.hooks.orm.models`', function (){
+    it('should contain the expected models in `sails.hooks[\'orm-offshore\'].models`', function (){
       assert.equal(_.keys(app.models).length, 1);
       assert(_.isObject(app.models.foo), new Error('Should have a model under the `foo` key'));
     });
