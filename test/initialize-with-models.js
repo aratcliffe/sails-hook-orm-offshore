@@ -106,7 +106,7 @@ describe('initialize() with model(s)', function (){
               }
             },
             adapters: {
-              'sails-disk': {}
+              'offshore-memory': {}
             }
           }
         }
@@ -114,7 +114,7 @@ describe('initialize() with model(s)', function (){
     });
 
 
-    it('should have initialized the `orm` hook', function (){
+    it('should have initialized the `orm-offshore` hook', function (){
       assert(app.hooks['orm-offshore']);
     });
 
