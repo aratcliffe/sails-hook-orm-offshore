@@ -59,7 +59,7 @@ module.exports = function (sails) {
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // TODO: get rid of this once we pass it in directly below
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            'sails-disk': require('sails-disk')
+            'offshore-memory': require('offshore-memory')
           },
         }
         //================================================================
@@ -72,7 +72,7 @@ module.exports = function (sails) {
 
         // This default connection (i.e. datasource) for the app
         // will be used for each model unless otherwise specified.
-        connection: 'localDiskDb'
+        connection: 'memory'
 
       },
 
@@ -84,7 +84,7 @@ module.exports = function (sails) {
         // Built-in disk persistence
         // (by default, creates the file: `.tmp/localDiskDb.db`)
         localDiskDb: {
-          adapter: 'sails-disk'
+          adapter: 'offshore-memory'
           // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           // TODO: change this to:
           // `adapter: require('sails-disk')`
