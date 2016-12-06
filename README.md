@@ -43,8 +43,8 @@ In order for this hook to load, the following other hooks must have already fini
 
 If this hook is disabled, in order for Sails to load, the following other hooks must also be disabled:
 
-- (sails-hook-blueprints-offshore)[https://github.com/Atlantis-Software/sails-hook-blueprints-offshore]
-- (sails-hook-pubsub-offshore)[https://github.com/Atlantis-Software/sails-hook-pubsub-offshore]
+- [sails-hook-blueprints-offshore](https://github.com/Atlantis-Software/sails-hook-blueprints-offshore)
+- [sails-hook-pubsub-offshore](https://github.com/Atlantis-Software/sails-hook-pubsub-offshore)
 
 
 ## Purpose
