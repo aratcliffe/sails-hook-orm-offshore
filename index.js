@@ -83,7 +83,7 @@ module.exports = function (sails) {
 
         // Built-in disk persistence
         // (by default, creates the file: `.tmp/localDiskDb.db`)
-        localDiskDb: {
+        memory: {
           adapter: 'offshore-memory'
           // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           // TODO: change this to:
