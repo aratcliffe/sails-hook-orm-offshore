@@ -41,10 +41,10 @@ In order for this hook to load, the following other hooks must have already fini
 
 ## Dependents
 
-If this hook is disabled, in order for Sails to load, the following other core hooks must also be disabled:
+If this hook is disabled, in order for Sails to load, the following other hooks must also be disabled:
 
-- blueprints
-- pubsub
+- (sails-hook-blueprints-offshore)[https://github.com/Atlantis-Software/sails-hook-blueprints-offshore]
+- (sails-hook-pubsub-offshore)[https://github.com/Atlantis-Software/sails-hook-pubsub-offshore]
 
 
 ## Purpose
@@ -84,11 +84,11 @@ If enabled (`sails.config.globals.models` set to true), use the inferred `global
 This hook sets the following implicit default configuration on `sails.config`:
 
 
-| Property                                       | Type          | Default         |
-|------------------------------------------------|:-------------:|-----------------|
-| `sails.config.globals.models`                  | ((boolean))   | `true`          |
-| `sails.config.models.connection`               | ((string))    | `localDiskDb`   |
-| `sails.config.connections.localDiskDb.adapter` | ((string))    | `sails-disk`    |
+| Property                                       | Type          | Default          |
+|------------------------------------------------|:-------------:|------------------|
+| `sails.config.globals.models`                  | ((boolean))   | `true`           |
+| `sails.config.models.connection`               | ((string))    | `default`        |
+| `sails.config.connections.default.adapter`     | ((string))    | `offshore-memory`|
 
 
 i.e.
@@ -105,7 +105,7 @@ i.e.
 
     // This default connection (i.e. datasource) for the app
     // will be used for each model unless otherwise specified.
-    connection: 'localDiskDb'
+    connection: 'default'
   },
 
 
@@ -113,10 +113,8 @@ i.e.
   // Can be attached to models and/or accessed directly.
   connections: {
 
-    // Built-in disk persistence
-    // (by default, creates the file: `.tmp/localDiskDb.db`)
-    localDiskDb: {
-      adapter: 'sails-disk'
+    default: {
+      adapter: 'offshore-memory'
     }
   }
 }
@@ -125,19 +123,19 @@ i.e.
 
 ## Events
 
-##### `hook:orm:loaded`
+##### `hook:orm-offshore:loaded`
 
 Emitted when this hook has been automatically loaded by Sails core, and triggered the callback in its `initialize` function.
 
 
-##### `hook:orm:reload`
+##### `hook:orm-offshore:reload`
 
 This event is no longer emitted by this hook.  This event will likely be replaced by making `.reload()` a public function.
 
 > This event is experimental and is likely to change in a future release.
 
 
-##### `hook:orm:reloaded`
+##### `hook:orm-offshore:reloaded`
 
 Emitted when a reload is complete.  This event will likely be replaced by expecting a callback in `.reload()`.
 
@@ -148,7 +146,7 @@ Emitted when a reload is complete.  This event will likely be replaced by expect
 
 ## Methods
 
-#### sails.hooks.orm.reload()
+#### sails.hooks['orm-offshore'].reload()
 
 Reload the ORM hook, reloading models and adapters from disk, and reinstantiating Waterline.
 
@@ -156,7 +154,7 @@ Reload the ORM hook, reloading models and adapters from disk, and reinstantiatin
 - Also note that there is currently no callback.
 
 ```javascript
-sails.hooks.orm.reload();
+sails.hooks['orm-offshore'].reload();
 ```
 
 
@@ -168,12 +166,12 @@ sails.hooks.orm.reload();
 
 
 
-#### sails.hooks.orm.teardown()
+#### sails.hooks['orm-offshore'].teardown()
 
 Call the `teardown()` method for adapters which have one, and which were previously loaded by the ORM hook.
 
 ```javascript
-sails.hooks.orm.teardown(cb);
+sails.hooks['orm-offshore'].teardown(cb);
 ```
 
 
@@ -188,7 +186,6 @@ sails.hooks.orm.teardown(cb);
 > ##### API: Private
 > - Please do not use this method in userland (i.e. in your app or even in a custom hook or other type of Sails plugin).
 > - Because it is a private API of a core hook, if you use this method in your code it may stop working or change without warning, at any time.
-> - If you would like to see a version of this method made public and its API stabilized, please open a [proposal](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#v-proposing-features-and-enhancements).
 
 
 
@@ -203,12 +200,6 @@ This repo contains a hook, one of the building blocks Sails is made out of.
 #### What version of Sails is this for?
 
 This hook is a dependency of Sails core as of v0.12.
-
-#### Can I override this hook to use a different ORM like Mongoose or Bookshelf instead of Waterline?
-
-Yes.  To override this hook, define your replacement hook with `identity: orm` in your `.sailsrc` file or your app's `api/hooks/` directory.
-
-
 
 
 ## License
