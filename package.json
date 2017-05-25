@@ -35,7 +35,7 @@
     "lodash": "3.10.1",
     "prompt": "0.2.14",
     "rttc": "^10.0.0-0",
-    "offshore": "^1.0.1",
+    "offshore": "aratcliffe/offshore",
     "offshore-memory": "0.0.6"
   },
   "sails": {
